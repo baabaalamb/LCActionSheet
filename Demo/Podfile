@@ -4,8 +4,9 @@ target 'LCActionSheetDemo' do
   # use_frameworks!
 
   # Pods for LCActionSheetDemo
-  pod 'LCActionSheet', :path => '../'
-  
+   pod 'LCActionSheet', :path => '../'
+#  pod 'LCActionSheet',:git => 'https://github.com/baabaalamb/LCActionSheet.git'
+
   pod 'Reveal-SDK', :configurations => ['Debug']
   # pod 'JGProgressHUD'
   

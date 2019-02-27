@@ -56,6 +56,18 @@
         make.top.equalTo(self.view).offset(30.0 + ([[UIDevice currentDevice] lc_isX] ? 14.0 : 0));
         make.height.offset(44.0);
     }];
+    
+//    UIButton *rightClosebtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    rightClosebtn.backgroundColor = [UIColor cyanColor];
+//    [actionSheet addSubview:rightClosebtn];
+//    rightClosebtn.frame = CGRectMake(self.view.frame.size.width - 16 - 18, self.view.frame.size.height - actionSheet.buttonHeight * 3- 14 - 18, 18, 18);
+    //    [rightClosebtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    //        make.right.equalTo(self.view).offset(-10.0);
+    //        make.top.equalTo(self.view).offset(10.0);
+    //        make.height.offset(40.0);
+    //        make.width.offset(40.0);
+    //
+    //    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,10 +81,10 @@
 }
 
 - (IBAction)showDefaultActionSheet {
-    LCActionSheet *actionSheet = [LCActionSheet sheetWithTitle:@""
+    LCActionSheet *actionSheet = [LCActionSheet sheetWithTitle:@"选择出借类型"
                                                       delegate:self
-                                             cancelButtonTitle:@"Cancel"
-                                             otherButtonTitles:@"Button 1", nil];
+                                             cancelButtonTitle:nil
+                                             otherButtonTitles:@"首次",@"续投", nil];
 
 //    NSMutableIndexSet *indexSet = [[NSMutableIndexSet alloc] init];
 //    [indexSet addIndex:1];

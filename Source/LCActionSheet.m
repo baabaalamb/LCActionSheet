@@ -40,6 +40,7 @@
 @property (nonatomic, assign) CGSize titleTextSize;
 
 @property (nonatomic, weak) UIView *bottomView;
+@property (nonatomic, weak) UIButton *rightTopBtn;
 @property (nonatomic, weak) UIVisualEffectView *blurEffectView;
 @property (nonatomic, weak) UIView *darkView;
 @property (nonatomic, weak) UILabel *titleLabel;
@@ -60,6 +61,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 
 + (instancetype)sheetWithTitle:(NSString *)title delegate:(id<LCActionSheetDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSString *)otherButtonTitles, ... {
     id eachObject;
@@ -362,6 +364,28 @@
     }];
     self.titleLabel = titleLabel;
     
+    //右侧关闭按钮
+    UIButton *rightClosebtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [bottomView addSubview:rightClosebtn];
+//    rightClosebtn.backgroundColor = [UIColor cyanColor];
+    [rightClosebtn setImage:[UIImage imageNamed:@"quit"] forState:UIControlStateNormal];
+    [rightClosebtn addTarget:self action:@selector(closeBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [rightClosebtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(bottomView).offset(-16.0);
+        make.centerY.equalTo(titleLabel);
+        make.height.offset(18.0);
+        make.width.offset(18.0);
+
+    }];
+    self.rightTopBtn = rightClosebtn;
+    if ([self.title isEqualToString:@"选择出借类型"]) {
+        self.rightTopBtn.hidden = NO;
+
+    }else{
+        self.rightTopBtn.hidden = YES;
+
+    }
+    
     UITableView *tableView    = [[UITableView alloc] init];
     tableView.backgroundColor = [UIColor clearColor];
     tableView.dataSource      = self;
@@ -424,6 +448,10 @@
         make.height.equalTo(@(height));
     }];
     self.cancelButton = cancelButton;
+}
+
+- (void)closeBtnClick {
+    [self hideWithButtonIndex:0];
 }
 
 - (void)appendButtonsWithTitles:(NSString *)titles, ... {
