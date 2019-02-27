@@ -378,13 +378,7 @@
 
     }];
     self.rightTopBtn = rightClosebtn;
-    if ([self.title isEqualToString:@"选择出借类型"]) {
-        self.rightTopBtn.hidden = NO;
 
-    }else{
-        self.rightTopBtn.hidden = YES;
-
-    }
     
     UITableView *tableView    = [[UITableView alloc] init];
     tableView.backgroundColor = [UIColor clearColor];
@@ -448,6 +442,15 @@
         make.height.equalTo(@(height));
     }];
     self.cancelButton = cancelButton;
+    
+    if ([self.title isEqualToString:@"选择出借类型"]) {
+        self.rightTopBtn.hidden = NO;
+        self.tableView.backgroundColor = [UIColor whiteColor];
+        
+    }else{
+        self.rightTopBtn.hidden = YES;
+        
+    }
 }
 
 - (void)closeBtnClick {
